@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Demoshop msite</title>
+<style>
+body { font-family: sans-serif; background-color: #white; }
+button { height: 40px; margin-top: 15px; }
+</style>
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
+</script>
+<!-- End Facebook Pixel Code -->
+</head>
+<body>
+<h3>Demoshop Really Simple!</h3>
+<table>
+  <tr>
+    <td><img src="http://www.didi-ads.com/magento/media/catalog/product/a/c/ace001_1.jpg" width="200"></td>
+    <td>
+    	Jackie O Round Sunglasses
+      <br><small><b>225,00 USD</b></small>
+    </td>
+    <td><a href="#" id="addToCartBtn">Add Cart</a></td>
+    <td><a href="#" id="purchaseBtn">Purchase</a></td>
+  </tr>
+</table>
+</body>
+<script>
+(function () {
+    //var viewContentBtn = document.getElementById('viewContentBtn');
+    var addToCartBtn = document.getElementById('addToCartBtn');
+    var purchaseBtn = document.getElementById('purchaseBtn');
+
+		fbq('init', '246355733292761');
+		fbq('track', 'PageView');
+
+    fbq('track', 'ViewContent', {
+        content_type: 'product',
+        content_ids: ['338'],
+        content_name: 'Jackie O Round Sunglasses',
+        content_category: 'Sunglasses',
+        value: 225.00,
+        currency: 'USD'
+    });
+
+    var clickevent = window.ontouchend ? 'touchend' : 'click';
+    addToCartBtn.addEventListener(clickevent, function(evt) {
+      evt.preventDefault();
+      fbq('track', 'AddToCart', {
+        content_type: 'product',
+        content_ids: ['338']
+      });
+      return false;
+    });
+    purchaseBtn.addEventListener(clickevent, function(evt) {
+      evt.preventDefault();
+      fbq('track', 'Purchase', {
+        content_type: 'product',
+        content_ids: ['338'],
+        content_name: 'Jackie O Round Sunglasses',
+        content_category: 'Sunglasses',
+        value: 225.00,
+        currency: 'USD'        
+      });
+      return false;
+    });    
+})();
+</script>
+</html>
